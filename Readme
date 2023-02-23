@@ -1,1 +1,20 @@
 test
+
+Prereq:
+1: Build docker image
+2: push it to ECR
+3: EKS cluster
+
+Step 1: EKS cluster
+Step 2: ns main
+Step 3: Depoy the appln on EKS
+Step 4: write ingress to host it
+Step 5: Github actions
+
+
+Acccess key: AKIAXMLM6RJI4QFI7UGW
+secret key : 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
+
+komalsbobade11@gmail.com
+Pune@111222
+

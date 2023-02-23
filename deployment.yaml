@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+namespace: test
+metadata:
+  name: scalingo
+spec:
+  selector:
+    matchLabels:
+      app: scalingo
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: scalingo
+    spec:
+      containers:
+      - name: scalingo
+        image: 507571505745.dkr.ecr.us-east-1.amazonaws.com/scalingo
+        env:
+        - name: AUTHOR
+          value: scalingo
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+namespace: test
+metadata:
+  labels:
+    app: scalingo
+  name: scalingo
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: scalingo

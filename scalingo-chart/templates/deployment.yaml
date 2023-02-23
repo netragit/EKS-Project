@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scalingo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: scalingo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: scalingo
+    spec:
+      containers:
+      - name: scalingo-container
+        image: 507571505745.dkr.ecr.us-east-1.amazonaws.com/scalingo:1
+        env:
+        - name: MY_APP_ENV_VAR
+          value: "main"
