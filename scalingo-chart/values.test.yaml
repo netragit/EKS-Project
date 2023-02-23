@@ -1,4 +1,0 @@
-# Values specific to the test environment
-replicaCount: 1
-env:
-  MY_APP_ENV_VAR: test

@@ -1,7 +1,0 @@
-# Default values for my-app chart
-image:
-  repository: sample-node
-  tag: latest
-replicaCount: 1
-env:
-  MY_APP_ENV_VAR: production
