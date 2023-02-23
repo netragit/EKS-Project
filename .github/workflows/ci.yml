@@ -41,6 +41,7 @@ jobs:
       - name: Deploy to EKS
         run: |
           aws eks update-kubeconfig --name newcluster1 --region $REGION
+          helm list -all
 
       - name: Deploy to EKS main namespace
         run: |
