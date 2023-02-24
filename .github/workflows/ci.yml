@@ -51,8 +51,8 @@ jobs:
         run: |
           aws eks update-kubeconfig --name $CLUSTER_NAME --region $REGION
 
-      - name: Deploy to EKS main namespace
+      - name: Deploy to EKS $GITHUB_REF_NAME namespace
         run: |
-          helm upgrade --install --namespace ${GITHUB_REF##*/} $CHART_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml
+          helm upgrade --install --namespace $GITHUB_REF_NAME $CHART_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml
           sleep 10s
-          kubectl get svc --namespace ${GITHUB_REF##*/}
+          kubectl get svc --namespace $GITHUB_REF_NAME
