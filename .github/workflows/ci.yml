@@ -36,12 +36,9 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
-          docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ secrets.ECR_REPO_URI }}:$GITHUB_RUN_ID
-          docker push ${{ secrets.ECR_REPO_URI }}:$GITHUB_RUN_ID
-          echo "run id is $GITHUB_RUN_ID"
-          echo "accound id ${{ vars.ACC_VAR }}"
-          echo "accoutn  id ${{ env.ACC_VAR }}"
-          echo "account id is : ${ACC_VAR}"
+          docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ secrets.ECR_REPO_URI }}:${{ github.sha }}
+          docker push ${{ secrets.ECR_REPO_URI }}:${{ github.sha }}
+          echo "run id is ${{ github.sha }}"
 
       - name: Install Kubectl
         run: |
@@ -57,7 +54,6 @@ jobs:
 
       - name: Deploy to EKS $GITHUB_REF_NAME namespace
         run: |
-          helm upgrade --install --namespace $GITHUB_REF_NAME $CHART_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml --set image.tag=$GITHUB_RUN_ID
+          helm upgrade --install --namespace $GITHUB_REF_NAME $CHART_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml --set image.tag=${{ github.sha }}
           sleep 10s
           kubectl get svc --namespace $GITHUB_REF_NAME
-          
