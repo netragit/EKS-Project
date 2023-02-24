@@ -40,7 +40,7 @@ jobs:
           docker push ${{ secrets.ECR_REPO_URI }}:latest
           echo '${{ vars.ACCOUNT_ID }}'
           echo '${{ env.ACCOUNT_ID }}'
-          echo 'account id is : $ACCOUNT_ID'
+          echo 'account id is : $ACC_VAR'
 
       - name: Install Kubectl
         run: |
