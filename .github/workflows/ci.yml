@@ -60,3 +60,4 @@ jobs:
           helm upgrade --install --namespace $GITHUB_REF_NAME $CHART_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml --set image.tag=$GITHUB_RUN_ID
           sleep 10s
           kubectl get svc --namespace $GITHUB_REF_NAME
+          
