@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - 'main'
-      - 'test'
+      - 'testing'
 
 env:
   ECR_REPOSITORY: scalingo
@@ -13,6 +13,7 @@ env:
   RELEASE_NAME: scalingo-chart
   REGION: ap-southeast-2
   CHART_NAME: scalingo-chart
+  CLUSTER_NAME: EKS-Cluster
 
 jobs:
   deploy:
@@ -48,10 +49,10 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          aws eks update-kubeconfig --name EKS-Cluster --region $REGION
+          aws eks update-kubeconfig --name $CLUSTER_NAME --region $REGION
 
       - name: Deploy to EKS main namespace
         run: |
-          helm upgrade --install --namespace main $CHART_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml
+          helm upgrade --install --namespace ${GITHUB_REF##*/} $CHART_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml
           sleep 10s
-          kubectl get svc --namespace main
+          kubectl get svc --namespace ${GITHUB_REF##*/}

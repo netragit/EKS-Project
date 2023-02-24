@@ -17,6 +17,3 @@ spec:
       containers:
       - name: scalingo-container
         image: 507571505745.dkr.ecr.us-east-1.amazonaws.com/scalingo-ecr:1
-        env:
-        - name: MY_APP_ENV_VAR
-          value: "main"
