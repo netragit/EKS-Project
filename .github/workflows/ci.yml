@@ -38,8 +38,8 @@ jobs:
           docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
           docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ secrets.ECR_REPO_URI }}:latest
           docker push ${{ secrets.ECR_REPO_URI }}:latest
-          echo '${{ vars.ACCOUNT_ID }}'
-          echo '${{ env.ACCOUNT_ID }}'
+          echo 'accound id ${{ vars.ACC_VAR }}'
+          echo 'accoutn  id ${{ env.ACC_VAR }}'
           echo 'account id is : $ACC_VAR'
 
       - name: Install Kubectl
