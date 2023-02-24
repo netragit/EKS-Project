@@ -46,6 +46,7 @@ jobs:
           mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
           echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
           kubectl version --short --client
+          echo '${{ vars.ACCOUNT_ID }}'
 
       - name: Deploy to EKS
         run: |
