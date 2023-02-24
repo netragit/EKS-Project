@@ -39,6 +39,9 @@ jobs:
           docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ secrets.ECR_REPO_URI }}:$GITHUB_RUN_ID
           docker push ${{ secrets.ECR_REPO_URI }}:$GITHUB_RUN_ID
           echo "run id is $GITHUB_RUN_ID"
+          echo "accound id ${{ vars.ACC_VAR }}"
+          echo "accoutn  id ${{ env.ACC_VAR }}"
+          echo "account id is : ${ACC_VAR}"
 
       - name: Install Kubectl
         run: |
