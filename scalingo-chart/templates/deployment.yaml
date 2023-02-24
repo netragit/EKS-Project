@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: scalingo-container
-        image: 507571505745.dkr.ecr.ap-southeast-2.amazonaws.com/{{ .Values.images.tag }}
+        image: 507571505745.dkr.ecr.ap-southeast-2.amazonaws.com/{{ .Values.image.tag }}
         imagePullPolicy: Always
 
         #image: 507571505745.dkr.ecr.ap-southeast-2.amazonaws.com/scalingo-ecr:latest
