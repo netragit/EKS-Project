@@ -1,2 +1,2 @@
 replicaCount: 1
-image: ${{ vars.ACC_VAR }}.dkr.ecr.ap-southeast-2.amazonaws.com/scalingo-ecr:latest
+image: 507571505745.dkr.ecr.ap-southeast-2.amazonaws.com/scalingo-ecr:latest

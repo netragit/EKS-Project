@@ -1,0 +1,27 @@
+datadog:
+  clusterName: eks-cluster
+
+  # datadog.site -- The site of the Datadog intake to send Agent data to
+  ## Set to 'datadoghq.eu' to send data to the EU site.
+  site: datadoghq.eu
+
+  # Export custom Kubernetes labels as tags
+  podLabelsAsTags:
+    "qovery.com/*": "%%label%%"
+
+  logs:
+    enabled: true
+    containerCollectAll: true
+
+  # Set to false if you are not using APM.
+  apm:
+    enabled: true
+  
+  containerExcludeLogs: "kube_namespace:kube-system kube_namespace:qovery kube_namespace:cert-manager kube_namespace:nginx-ingress kube_namespace:logging kube_namespace:prometheus"
+
+# You can remove this part if you are not using APM.
+# Note that it it will be enabled for all your applications.
+clusterAgent:
+  admissionController:
+    enabled: true
+    mutateUnlabelled: true
