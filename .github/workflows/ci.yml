@@ -36,11 +36,13 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
-          docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ secrets.ECR_REPO_URI }}:latest
-          docker push ${{ secrets.ECR_REPO_URI }}:latest
+          docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ secrets.ECR_REPO_URI }}:$GITHUB_RUN_ID
+          docker push ${{ secrets.ECR_REPO_URI }}:$GITHUB_RUN_ID
           echo 'accound id ${{ vars.ACC_VAR }}'
           echo 'accoutn  id ${{ env.ACC_VAR }}'
           echo 'account id is : ${ACC_VAR}'
+          echo '$GITHUB_REF_NAME' 
+          echo '$GITHUB_RUN_ID'
 
       - name: Install Kubectl
         run: |
