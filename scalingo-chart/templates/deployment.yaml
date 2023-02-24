@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: scalingo
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   strategy:
     type: RollingUpdate
   template:
@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: scalingo-container
-        image: $ACCOUNT_ID.dkr.ecr.ap-southeast-2.amazonaws.com/scalingo-ecr:latest
+        image: {{ .Values.image }}
