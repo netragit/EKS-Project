@@ -13,6 +13,7 @@ env:
   REGION: ap-southeast-2
   CHART_NAME: scalingo-chart
   CLUSTER_NAME: ekscluster
+  IMAGE_TAG: latest
 
 jobs:
   deploy:
