@@ -55,6 +55,6 @@ jobs:
       - name: Deploy to EKS $GITHUB_REF_NAME namespace
         run: |
           export values="replicaCount=1,image.tag=${{ github.sha }}"
-          helm upgrade --install --namespace main scalingo-chart ./scalingo-chart --values ./scalingo-chart/values.yaml --set image.tag=${{ github.sha }} --debug 
+          helm upgrade --install --namespace $GITHUB_REF_NAME $RELEASE_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml --set image.tag=${{ github.sha }} --debug 
           sleep 10s
           kubectl get svc --namespace $GITHUB_REF_NAME
