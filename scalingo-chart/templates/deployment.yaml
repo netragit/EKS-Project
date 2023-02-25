@@ -42,12 +42,12 @@ spec:
               value: "true"
             - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
               value: "true"
-            volumeMounts:
+          volumeMounts:
             - name: dd-agent-config
               mountPath: /etc/datadog-agent
             - name: dd-agent-log
               mountPath: /var/log/datadog
-            volumes:
+          volumes:
             - name: dd-agent-config
               configMap:
                 name: datadog-agent-config
