@@ -1,4 +1,4 @@
 replicaCount: 1
+accountID: 081400358410
 image:
    tag: latest
-kubeVersionOverride: "1.25.0"

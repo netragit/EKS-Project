@@ -1,5 +1,5 @@
 datadog:
-  clusterName: eks-cluster
+  clusterName: nodecluster
 
   # datadog.site -- The site of the Datadog intake to send Agent data to
   ## Set to 'datadoghq.eu' to send data to the EU site.
