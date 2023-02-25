@@ -12,7 +12,7 @@ env:
   RELEASE_NAME: scalingo-chart
   REGION: ap-southeast-2
   CHART_NAME: scalingo-chart
-  CLUSTER_NAME: EKS-Cluster
+  CLUSTER_NAME: ekscluster
 
 jobs:
   deploy:
