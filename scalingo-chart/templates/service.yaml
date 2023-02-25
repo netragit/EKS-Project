@@ -5,9 +5,9 @@ metadata:
   labels:
     app: scalingo
 spec:
-  type: NodePort
+  type: Loadbalancer
   selector:
     app: scalingo
   ports:
-    - port: 3000
+    - port: 80
       targetPort: 3000
