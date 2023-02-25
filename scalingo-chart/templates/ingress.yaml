@@ -9,8 +9,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /
+      - path: "/"
         pathType: ImplementationSpecific
         backend:
-          serviceName: scalingo-service
-          servicePort: 3000
+          service:
+            name: scalingo-service
+            port: 
+              number: 3000
