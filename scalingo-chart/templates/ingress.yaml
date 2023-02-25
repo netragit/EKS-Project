@@ -10,7 +10,7 @@ spec:
   - http:
       paths:
       - path: /
-        pathType: ImplementationSpecific
+        pathType: Prefix
         backend:
           serviceName: scalingo-service
           servicePort: 3000
