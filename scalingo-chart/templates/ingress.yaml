@@ -1,15 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  namespace: main
   name: scalingo-ingress
-  annotations:
-    ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: ingress-app
 spec:
   rules:
-  - http:
-      paths:
-      - path: /testapp
-        backend:
-          serviceName: scalingo-service
-          servicePort: 3000
-
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: scalingo-service
+              servicePort: 3000
