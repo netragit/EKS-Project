@@ -1,4 +1,4 @@
 replicaCount: 1
-accountID: 081400358410
 image:
+   accountID: 081400358410
    tag: latest
