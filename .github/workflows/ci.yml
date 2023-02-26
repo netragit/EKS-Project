@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - 'main'
-      - 'testing'
+      - 'test'
 
 env:
   ECR_REPOSITORY: scalingo_ecr
