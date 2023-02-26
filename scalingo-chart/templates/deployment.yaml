@@ -16,46 +16,5 @@ spec:
     spec:
         containers:
         - name: scalingo-container
-          #image: {{ .Values.accountID }}.dkr.ecr.ap-southeast-2.amazonaws.com/scalingo_ecr:{{ .Values.image.tag }}
-          image: 081400358410.dkr.ecr.ap-southeast-2.amazonaws.com/scalingo_ecr:latest
+          image: {{ .Values.accountID }}.dkr.ecr.ap-southeast-2.amazonaws.com/scalingo_ecr:{{ .Values.image.tag }}
           imagePullPolicy: Always
-        - name: datadog-agent 
-          image: datadog/agent:latest
-          ports:
-            - containerPort: 8126
-              name: traceport
-              protocol: TCP
-          env:
-            - name: DD_KUBERNETES_KUBELET_NODENAME
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: spec.nodeName
-            - name: DD_API_KEY
-              value: afc636db44e5191e4444228b54a941c3
-          #   - name: DD_SITE
-          #     value: datadoghq.com
-          #   - name: DD_APM_ENABLED
-          #     value: "true"
-          #   - name: DD_APM_NON_LOCAL_TRAFFIC
-          #     value: "true"
-          #   - name: DD_LOGS_ENABLED
-          #     value: "true"
-          #   - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
-          #     value: "true"
-          #   - name: dd-agent-config
-          #     mountPath: /conf.d
-          #   - name: datadog-yaml
-          #     mountPath: /etc/datadog-agent/datadog.yaml
-          #     subPath: datadog.yaml
-          # volumeMounts:
-          #   - name: dd-agent-config
-          #     mountPath: /etc/datadog-agent
-          #   - name: dd-agent-log
-          #     mountPath: /var/log/datadog
-          # volumes:
-          #   - name: dd-agent-config
-          #     configMap:
-          #       name: datadog-agent-config
-          #   - name: dd-agent-log
-          #     emptyDir: {}
