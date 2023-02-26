@@ -36,8 +36,8 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
-          docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ secrets.ECR_REPO_URI }}:latest
-          docker push ${{ secrets.ECR_REPO_URI }}:latest
+          docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ secrets.ECR_REPO_URI }}:${{ github.sha }}
+          docker push ${{ secrets.ECR_REPO_URI }}:${{ github.sha }}
           echo "run id is ${{ github.sha }}"
 
       - name: Install Kubectl
@@ -54,7 +54,7 @@ jobs:
 
       - name: Deploy to EKS $GITHUB_REF_NAME namespace
         run: |
-          export values="replicaCount=1,image.tag=latest"
+          export values="replicaCount=1,image.tag=${{ github.sha }}"
           helm upgrade --install --namespace $GITHUB_REF_NAME $RELEASE_NAME ./$CHART_NAME --values ./$CHART_NAME/values.yaml --set image.tag=${{ github.sha }} --debug 
           sleep 10s
           kubectl get svc --namespace $GITHUB_REF_NAME
