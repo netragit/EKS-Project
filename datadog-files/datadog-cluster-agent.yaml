@@ -39,9 +39,6 @@ spec:
             value: "83a56372c13fe747a3bbc7187d2615d6"
           - name: DD_SITE
             value: us5.datadoghq.com
-          # Optionally reference an APP KEY for the External Metrics Provider.
-          # - name: DD_APP_KEY
-          #   value: '<YOUR_APP_KEY>'
           - name: DD_CLUSTER_AGENT_AUTH_TOKEN
             valueFrom:
               secretKeyRef:
